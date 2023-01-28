@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.css"
+    />
+    <style>
+        .inputs {
+            margin: 20px;
+        }
+        input{
+            width: 250px;
+            height: 40px;
+        }
+        .remove {
+            width: 250px;
+            height: 50px;
+            font-size: 15px;
+        }
+        #rated, #tvalue {
+          font-size:xx-large;
+        }
+    </style>
+  </head>
+  <body>
+      <form>
+        <div class="inputs">
+            <input id="title" type="text" placeholder="title">
+        </div>
+        <div class="inputs">
+            <input id="rating" type="text" placeholder="rating">
+        </div>
+        <div class="inputs">
+            <input id="submission" type="submit">
+        </div>
+      </form>
+  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $("#submission").click(function(e){
+        e.preventDefault();
+           let $titleVal = $('#title').val()
+           let $ratingVal = $('#rating').val()
+           $(`<div id="tvalue" class="inputs">${$titleVal}<div/>`).insertAfter("form")
+            $(`<div id="rated" class="inputs">${$ratingVal}<div/>`).insertAfter("form")
+            $("#tvalue").append(`<button class="remove" id="titleVal"> delete title: ${$titleVal}`)
+            $("#rated").append(`<button class="remove"  id="ratedVal"> delete rating: ${$ratingVal}`)
+
+            $('#ratedVal').click(function(){
+              $("#rated").remove()
+            })
+            
+            $('#titleVal').click(function(){
+              $("#tvalue").remove()
+            })
+        }) 
+    </script>
+  </body>
+</html>
